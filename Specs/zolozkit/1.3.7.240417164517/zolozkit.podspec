@@ -42,8 +42,12 @@ Pod::Spec.new do |s|
   s.frameworks = "AVFoundation", "OpenGLES","CoreTelephony", "CoreMotion", "CoreLocation", "SystemConfiguration", "Accelerate", "CoreMedia","CoreServices","CoreGraphics","QuartzCore","CoreVideo","CoreImage","WebKit","CoreNFC"
   s.libraries = 'c++', 'z'
   s.subspec 'Core' do |core|
-    core.vendored_frameworks = 'zolozkit.framework','hummer.framework','ZolozIdentityManager.framework','BioAuthEngine.framework','BioAuthAPI.framework','ZLZProtoBufferLite.framework','ToygerService.framework','ToygerServiceAlgo.framework','xNN.framework'
-    core.resources  = "zolozkit.framework/ZolozKit.bundle","BioAuthEngine.framework/BioAuthEngine.bundle","ToygerServiceAlgo.framework/ToygerService.bundle"
+    core.vendored_frameworks = 'zolozkit.framework','xNN.framework'
+    core.resources  = "zolozkit.framework/ZolozKit.bundle"
+  end
+  s.subspec 'ToygerServiceAlgo' do |toyger|
+    toyger.vendored_frameworks = 'ToygerServiceAlgo.framework'
+    toyger.resources = "ToygerServiceAlgo.framework/ToygerService.bundle"
   end
   s.subspec 'ZolozIdentityManager' do |identity|
     identity.vendored_frameworks = 'ZolozIdentityManager.framework'
@@ -51,6 +55,7 @@ Pod::Spec.new do |s|
   end
   s.subspec 'BioAuthEngine' do |auth|
     auth.vendored_frameworks = 'BioAuthEngine.framework'
+    auth.resources = "BioAuthEngine.framework/BioAuthEngine.bundle"
     auth.resource_bundles = {"BioAuthEngine" => ["BioAuthEngine.framework/PrivacyInfo.xcprivacy"]}
   end
   s.subspec 'hummer' do |hum|
