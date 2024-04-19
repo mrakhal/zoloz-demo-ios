@@ -43,7 +43,19 @@ Pod::Spec.new do |s|
   s.libraries = 'c++', 'z'
   s.subspec 'Core' do |core|
     core.vendored_frameworks = 'zolozkit.framework','hummer.framework','ZolozIdentityManager.framework','BioAuthEngine.framework','BioAuthAPI.framework','ZLZProtoBufferLite.framework','ToygerService.framework','ToygerServiceAlgo.framework','xNN.framework'
-    core.resources  = "zolozkit.framework/ZolozKit.bundle","BioAuthEngine.framework/BioAuthEngine.bundle","ToygerServiceAlgo.framework/ToygerService.bundle", "BioAuthEngine.framework/PrivacyInfo.xcprivacy", "hummer.framework/PrivacyInfo.xcprivacy", "ZolozIdentityManager.framework/PrivacyInfo.xcprivacy"
+    core.resources  = "zolozkit.framework/ZolozKit.bundle","BioAuthEngine.framework/BioAuthEngine.bundle","ToygerServiceAlgo.framework/ToygerService.bundle"
+  end
+  s.subspec 'ZolozIdentityManager' do |identity|
+    identity.vendored_frameworks = 'ZolozIdentityManager.framework'
+    identity.resource_bundles = {"ZolozIdentityManager" => ["ZolozIdentityManager.framework/PrivacyInfo.xcprivacy"]}
+  end
+  s.subspec 'BioAuthEngine' do |auth|
+    auth.vendored_frameworks = 'BioAuthEngine.framework'
+    auth.resource_bundles = {"BioAuthEngine" => ["BioAuthEngine.framework/PrivacyInfo.xcprivacy"]}
+  end
+  s.subspec 'hummer' do |hum|
+    hum.vendored_frameworks = 'APBToygerGarfield.framework'
+    hum.resource_bundles = {"hummer" => ["hummer.framework/PrivacyInfo.xcprivacy"]}
   end
   s.subspec 'Garfield' do |garfield|
     garfield.vendored_frameworks = 'APBToygerGarfield.framework'
