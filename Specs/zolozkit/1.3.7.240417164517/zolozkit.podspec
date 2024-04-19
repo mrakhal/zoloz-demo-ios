@@ -43,7 +43,7 @@ Pod::Spec.new do |s|
   s.libraries = 'c++', 'z'
   s.subspec 'Core' do |core|
     core.vendored_frameworks = 'zolozkit.framework','hummer.framework','ZolozIdentityManager.framework','BioAuthEngine.framework','BioAuthAPI.framework','ZLZProtoBufferLite.framework','ToygerService.framework','ToygerServiceAlgo.framework','xNN.framework'
-    core.resources  = "zolozkit.framework/ZolozKit.bundle","BioAuthEngine.framework/BioAuthEngine.bundle","ToygerServiceAlgo.framework/ToygerService.bundle"
+    core.resources  = "zolozkit.framework/ZolozKit.bundle","BioAuthEngine.framework/BioAuthEngine.bundle","ToygerServiceAlgo.framework/ToygerService.bundle", "BioAuthEngine.framework/PrivacyInfo.xcprivacy", "hummer.framework/PrivacyInfo.xcprivacy", "ZolozIdentityManager.framework/PrivacyInfo.xcprivacy"
   end
   s.subspec 'Garfield' do |garfield|
     garfield.vendored_frameworks = 'APBToygerGarfield.framework'
@@ -64,13 +64,14 @@ Pod::Spec.new do |s|
   end
   s.subspec 'APPSecuritySDK' do |securitySDK|
     securitySDK.vendored_frameworks = 'APPSecuritySDK.framework'
+    securitySDK.resource_bundles = {"APPSecuritySDK" => ["APPSecuritySDK.framework/PrivacyInfo.xcprivacy"]}
   end
   s.subspec 'Dependency' do |cherry|
     cherry.vendored_frameworks = 'ZolozSensorServices.framework','zrpc.framework', 'WebContainerLite.framework', 'dfplite.framework', 'APLogLite.framework'
     cherry.resources = "WebContainerLite.framework/WebContainerLite.bundle"
+    cherry.resource_bundles = {"WebContainerLite" => ["WebContainerLite.framework/PrivacyInfo.xcprivacy"]}
   end
   s.default_subspec = 'Cherry','ZolozDocScan','Core','Dependency'
-
   s.requires_arc = true
 
 end
