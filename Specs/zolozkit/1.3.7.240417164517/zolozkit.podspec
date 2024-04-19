@@ -88,7 +88,7 @@ Pod::Spec.new do |s|
     cherry.resources = "WebContainerLite.framework/WebContainerLite.bundle"
     cherry.resource_bundles = {"WebContainerLite" => ["WebContainerLite.framework/PrivacyInfo.xcprivacy"]}
   end
-  s.default_subspec = 'Cherry','ZolozDocScan','Core','Dependency'
+  s.default_subspec = 'Cherry','ZolozDocScan','Core','Dependency','hummer','BioAuthEngine','ZolozIdentityManager','ToygerServiceAlgo'
   s.requires_arc = true
 
 end
